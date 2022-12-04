@@ -17,7 +17,7 @@ h3{
   display: flex;
 }
 
-.buttons p{
+.buttons button{
   margin-right: 10px;
   margin-left: 10px;
   background-color: #B6B6B6;
@@ -26,6 +26,13 @@ h3{
   border-radius: 1px;
 }
 
-.buttons p:hover{
-  cursor: pointer;
-} 
+.btn{
+  width: 100%;
+  padding: 25px;
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+/*.buttons p:hover{*/
+/*  cursor: pointer;*/
+/*} */
