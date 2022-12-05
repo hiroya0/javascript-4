@@ -4,23 +4,30 @@ let add_zero = function(number) {
 	}
 	return number;
 };
-
 let button_start;
 let clear_timer;
-let start = document.getElementById('start').addEventListener('click', function() {
+let start = document.getElementById('start_btn').onclick = function() {
 	button_start = new Date();
 	clear_timer = setInterval(start_timer, 10);
-});
-
-let stop = document.getElementById('stop').addEventListener('click', function() {
-	clearInterval(clear_timer);
-	start.onclick = document.getElementById('start').disabled = false;
-});
-
-document.getElementById('reset').onclick = function() {
-	document.getElementById('timer').innerHTML = '00:00:00';
+	start_btn.disabled = true;
+	stop_btn.disabled = false;
+	reset_btn.disabled = false;
 };
 
+let stop = document.getElementById('stop_btn').onclick = function() {
+	clearInterval(clear_timer);
+	start_btn.disabled = false;
+	stop_btn.disabled = true;
+	reset_btn.disabled = false;
+};
+
+let reset = document.getElementById('reset_btn').onclick = function() {
+	document.getElementById('timer').innerHTML = '00:00:00';
+	start_btn.disabled = false;
+	stop_btn.disabled = true;
+	reset_btn.disabled = true;
+	
+};
 let start_timer = function() {
 	let now = new Date();
 	let milli = now.getTime() - button_start.getTime();
@@ -32,5 +39,5 @@ let start_timer = function() {
 	seconds = add_zero(seconds);
 	minutes = add_zero(minutes);
 	hours = add_zero(hours);
-	document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+	document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds
 };
