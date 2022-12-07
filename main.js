@@ -11,7 +11,7 @@ let start = document.getElementById('start_btn').onclick = function() {
 	clear_timer = setInterval(start_timer, 10);
 	start_btn.disabled = true;
 	stop_btn.disabled = false;
-	reset_btn.disabled = false;
+	reset_btn.disabled = true;
 };
 
 let stop = document.getElementById('stop_btn').onclick = function() {
@@ -22,22 +22,31 @@ let stop = document.getElementById('stop_btn').onclick = function() {
 };
 
 let reset = document.getElementById('reset_btn').onclick = function() {
-	document.getElementById('timer').innerHTML = '00:00:00';
+	document.getElementById('timer').innerHTML = '00:00:00:000';
 	start_btn.disabled = false;
 	stop_btn.disabled = true;
 	reset_btn.disabled = true;
-	
 };
-let start_timer = function() {
+
+	let start_timer = function() {
 	let now = new Date();
 	let milli = now.getTime() - button_start.getTime();
 	let seconds = Math.floor(milli / 1000);
 	let minutes = Math.floor(seconds / 60);
 	let hours = Math.floor(minutes / 60);
+	
+	// let millis = Math.floor(milli / 10)
+	// milli = toString().slice(-3);
+	// let millis = function(){
+	// 	String(milli).sprit(".")[1];
+	// };
+	// .progress ? ("0" + String().split(".")[1]).slice(-2) : "000";
+	let millis = milli.toString().slice(-3);
+	// parseFloat(millis).toFixed(1);
 	seconds = seconds - minutes * 60;
 	minutes = minutes - hours * 60;
 	seconds = add_zero(seconds);
 	minutes = add_zero(minutes);
 	hours = add_zero(hours);
-	document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds
+	document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds + ':' + millis;
 };
